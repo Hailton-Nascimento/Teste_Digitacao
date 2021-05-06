@@ -24,7 +24,7 @@ campo.on("input", () => {
 
 var tempoRestante = $("#tempo-digitacao").text();
 campo.one("focus", () => {
-    var cronometroID = setInterval(() => {
+    const cronometroID = setInterval(() => {
         tempoRestante--;
         
         $("#tempo-digitacao").text(tempoRestante);
@@ -32,6 +32,14 @@ campo.one("focus", () => {
             campo.attr("disabled",true);
             clearInterval(cronometroID);
         }
-    }, 1000);
+    }, 1000)
         
 });
+
+campo.bind('cut copy paste', function(event) {
+        event.preventDefault();
+        console.log("não pode colar no campo")
+        alert(`Não pode trapacear!!
+        Deus tá vendo!` );
+       
+    }); 
