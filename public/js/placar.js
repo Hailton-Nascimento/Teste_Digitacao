@@ -2,6 +2,7 @@ $('#botao-placar').click(mostraPlacar);
 
 function deletar(evento) {
     evento.preventDefault();
+    console.log("deletou");
     $(this).closest("tr").fadeOut(1000);
     setTimeout(()=>{
         $(this).closest("tr").remove();
@@ -19,9 +20,6 @@ function inserePlacar(){
     $(".placar").slideDown(600);
     scroll($(".placar"));
     
-
-
-
 }
 
 
@@ -59,3 +57,5 @@ function mostraPlacar(){
 
     $(".placar").stop().slideToggle(700);
 }
+
+

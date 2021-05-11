@@ -1,4 +1,4 @@
-const tempoInicial = $("#tempo-digitacao").text()
+var tempoInicial = $("#tempo-digitacao").text()
 var campo = $(".campo-digitacao");
 
 
@@ -13,9 +13,6 @@ var campo = $(".campo-digitacao");
 // )
 
 
-
-
-
 $(document).ready(() => {
     atualizaTamanhoFrase();
     inicializaContadores();
@@ -23,10 +20,16 @@ $(document).ready(() => {
     evitaFraudes();
     verificaFrase();
     $("#botao-reiniciar").on("click", reiniciaJogo);
-    $(".botao-deletar").on("click",(event, deletar));
+    $(".botao-deletar").click(event,deletar);
+    
 
 });
 
+function atualizaTempoInicial(tempo){
+    tempoInicial=tempo;
+    $("#tempo-digitacao").text(tempo);
+  
+}
 
 //Contando numero de plavras nas frase e incluindo no HTML.
 
@@ -34,7 +37,7 @@ function atualizaTamanhoFrase() {
     var frase =$(".frase").text();
     var numPalavras = frase.split(" ").length;
     $('#numPalavras').text(numPalavras);
-
+  
 }
 
 
@@ -55,18 +58,18 @@ function inicializaContadores() {
 // add contador de tempo
 
 function inicializaCronometro() {
-    var tempoRestante = tempoInicial;
-    $("#botao-reiniciar").attr("disabled",true);
-    $("#tempo-digitacao").text(tempoRestante);
+    
+    $("#botao-reiniciar").attr("disabled",false);
     campo.one("focus", () => {
+        var tempoRestante = $("#tempo-digitacao").text();
         const cronometroID = setInterval(() => {
             tempoRestante--;
-
+            console.log(tempoRestante);
             $("#tempo-digitacao").text(tempoRestante);
-            if (tempoRestante < 1) {
+            if (tempoRestante == 0) {
                 clearInterval(cronometroID);
                 finalizaJogo();
-              
+                console.log("finalizou o jogo");
             }
         }, 1000)
 
@@ -87,10 +90,12 @@ function evitaFraudes() {
 }
 
 function reiniciaJogo() {
+    console.log("Botão clicado");
     campo.attr("disabled", false);
     campo.val('');
     $('#contador-palavras').text(0);
     $('#contador-caracteres').text(0);
+    $("#tempo-digitacao").text(tempoInicial);
     inicializaCronometro();
     campo.removeClass("campo-desabilita")
     campo.removeClass("borda-vermelha"); 
@@ -98,9 +103,9 @@ function reiniciaJogo() {
 }
 
 function verificaFrase(){
-    var frase = $(".frase").text();
+    
     campo.on("input", function() {
-
+        var frase = $(".frase").text();
         var digitado = campo.val();
         var comparavel = frase.substr(0 , digitado.length);
     
@@ -119,7 +124,8 @@ function verificaFrase(){
 
 function finalizaJogo() {
     campo.attr("disabled", true);
-    $("#botao-reiniciar").attr("disabled",false);
+    $("#botao-reiniciar").attr("disabled",true);
     campo.toggleClass("campo-desabilita");
     inserePlacar();
+
 }
