@@ -14,6 +14,8 @@ var campo = $(".campo-digitacao");
 
 
 $(document).ready(() => {
+    fraseAleatoria();
+    verificaQuantasFrades();
     atualizaTamanhoFrase();
     inicializaContadores();
     inicializaCronometro();
@@ -21,6 +23,7 @@ $(document).ready(() => {
     verificaFrase();
     $("#botao-reiniciar").on("click", reiniciaJogo);
     $(".botao-deletar").click(event,deletar);
+    
     
 
 });
@@ -61,15 +64,14 @@ function inicializaCronometro() {
     
     $("#botao-reiniciar").attr("disabled",false);
     campo.one("focus", () => {
+        console.log("Jogo iniciado");
         var tempoRestante = $("#tempo-digitacao").text();
         const cronometroID = setInterval(() => {
             tempoRestante--;
-            console.log(tempoRestante);
             $("#tempo-digitacao").text(tempoRestante);
             if (tempoRestante == 0) {
                 clearInterval(cronometroID);
                 finalizaJogo();
-                console.log("finalizou o jogo");
             }
         }, 1000)
 
@@ -90,7 +92,6 @@ function evitaFraudes() {
 }
 
 function reiniciaJogo() {
-    console.log("Botão clicado");
     campo.attr("disabled", false);
     campo.val('');
     $('#contador-palavras').text(0);

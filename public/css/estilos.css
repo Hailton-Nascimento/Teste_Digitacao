@@ -35,3 +35,22 @@ body{
 .placar{
     display: none;
 }
+#mensagem{
+    color: red;
+    display: none;
+    font-size: large;
+}
+#spinner{
+    display: none;
+}
+#frase-id{
+    width: 45px;
+    font-size: 25px;
+}
+.numero-frase{
+    font-size: 25px;
+    margin-left: 25px;
+    vertical-align: middle;
+    
+    
+}
