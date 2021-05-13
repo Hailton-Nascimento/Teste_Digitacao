@@ -5,26 +5,39 @@ var campo = $(".campo-digitacao");
 
 // atalho para Funciton para
 // $(document).ready(Funciton => {
-// });
-
-// $(Funciton(){
-//     executa tudo que esta aqui apos carregar a pagina.
-//     }
-// )
-
-
-$(document).ready(() => {
-    fraseAleatoria();
-    verificaQuantasFrades();
-    atualizaTamanhoFrase();
-    inicializaContadores();
-    inicializaCronometro();
-    evitaFraudes();
-    verificaFrase();
-    $("#botao-reiniciar").on("click", reiniciaJogo);
-    $(".botao-deletar").click(event,deletar);
+    // });
     
-    
+    // $(Funciton(){
+        //     executa tudo que esta aqui apos carregar a pagina.
+        //     }
+        // )
+        
+        
+        $(document).ready(() => {
+            fraseAleatoria();
+            verificaQuantasFrades();
+            atualizaTamanhoFrase();
+            inicializaContadores();
+            inicializaCronometro();
+            evitaFraudes();
+            verificaFrase();
+            atualizaPlacar();
+            $("#botao-reiniciar").on("click", reiniciaJogo);
+            $(".botao-deletar").click(event,deletar);
+            $("#usuarios").selectize({
+                create: true,
+                sortField: 'text'
+            });
+        
+  
+            $ ( '.tooltip' ). tooltipster ({ 
+                theme: 'my-custom-theme', 
+                touchDevices : false , 
+                trigger : 'custom',
+                trigger:"hover"
+            }); 
+            
+            
 
 });
 

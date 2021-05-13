@@ -44,13 +44,39 @@ body{
     display: none;
 }
 #frase-id{
-    width: 45px;
+    width: 30px;
     font-size: 25px;
+    vertical-align: middle;
 }
-.numero-frase{
+
+
+.numero-frase {
     font-size: 25px;
-    margin-left: 25px;
+    color: #00bcd4;
     vertical-align: middle;
     
     
 }
+#botao-sync{
+    float: right;
+}
+ul li{
+    text-align: center;
+}
+.select-usuarios{
+    display:inline-block;
+    width:  150px;
+    
+}
+
+#usuarios{
+    display:block;
+    
+}
+.selectize-input {
+    width: 100px;
+    vertical-align: middle;
+    font-size: 20px;
+    
+}
+

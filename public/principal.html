@@ -5,7 +5,12 @@
     <title>Teste de Digitação</title>
     <link rel="stylesheet" href="css/libs/materialize.min.css">
     <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/libs/selectize.default.css">
+    <link rel="stylesheet" href="css/libs/tooltipster.bundle.min.css" />
     <link rel="stylesheet" href="css/estilos.css">
+
+
+
 </head>
 <body>
     <div class="container">
@@ -31,20 +36,34 @@
             <textarea class="campo-digitacao" rows="8" cols ="40"outline: none ></textarea>
         
             <div class="botoes">
-                <a id="botao-reiniciar" class="btn-floating btn-large waves-effect waves-light red">
+                <a id="botao-reiniciar" class="tooltip btn-floating btn-small waves-effect waves-light red"title="Reiniciar partida.">
                     <i class="material-icons">restore</i>
                 </a>
-                <a id="botao-placar" class="btn-floating btn-large waves-effect waves-light green">
+                <a id="botao-placar" class="tooltip btn-floating btn-small waves-effect waves-light green"title="Exibir placar.">
                     <i class="material-icons">assignment</i>
                 </a>
-                <a id="botao-frase" class="btn-floating btn-large waves-effect waves-light blue">
+                <a id="botao-frase" class="tooltip btn-floating btn-small waves-effect waves-light blue"title="Sortear nova frase.">
                     <i class="material-icons">shuffle</i>
                 </a>
-                <a id="botao-frase-id" class="btn-floating btn-large waves-effect waves-light grey">
+               
+                <a id="botao-frase-id" class="tooltip btn-floating btn-small waves-effect waves-light cyan"title="Secelcionar frase de número.">
                     <i class="material-icons">repeat_one</i>
                 </a>
                 <a class="numero-frase"> Frase Nº:
                     <input type="number" min="0" id="frase-id">
+                </a>
+
+                <div class="select-usuarios">
+
+                    <select id="usuarios">
+                       <option value="Hailton">Hailton</option>
+                       <option value="Flavio">Flavio</option>
+                       <option value="Nico">Nico</option>
+                    </select>
+                 </div>
+        
+                <a id="botao-sync" class="tooltip btn-floating btn-smalls waves-effect waves-light grey" title="Sincronizar com servidor.">
+                    <i class="material-icons">swap_vert</i>
                 </a>
             </div>
         
@@ -84,6 +103,8 @@
     <script src="js/materialize.min.js"></script>
     <script src="js/placar.js"></script>
     <script src="js/frase.js"></script>
+    <script src="js/selectize.js"></script>
+    <script src="js/tooltipster.bundle.min.js"></script>
 
 </body>
 </html>
