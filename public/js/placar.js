@@ -34,8 +34,6 @@ function scroll(elemento){
 
 }
 
-
-
 function novaLinha(usuario, numPalavras) {
     var linha = $("<tr>");
     var colunaUsuario = $("<td>").text(usuario);
@@ -60,7 +58,7 @@ function mostraPlacar(){
 }
 
 
-function sincronizaPlacar(){
+function sincronizaPlacar(event){
   
     var placar = [];
     var linhas = $("tbody>tr");
@@ -79,25 +77,26 @@ function sincronizaPlacar(){
     var dados = {
         placar: placar
     };
-    var mensagem =  $(".tooltip").tooltipster("content");
+    var mensagem =  $(event.target).closest(".tooltip").tooltipster("content")
 
 
     $.post("http://localhost:3000/placar", dados , function() {
-        console.log("Placar sincronizado com sucesso");
-        $(".tooltip").tooltipster("open").tooltipster("content", "Placar sincronizado com sucesso"); 
+
+        $(event.target).closest(".tooltip").tooltipster("open").tooltipster("content", "Placar sincronizado com sucesso"); 
     }).fail(function(){
-        $(".tooltip").tooltipster("open").tooltipster("content", "Falha ao sincronizar"); 
-    }).always(function(){ //novo
+        $(event.target).closest(".tooltip").tooltipster("open").tooltipster("content", "Falha ao sincronizar"); 
+    }).always(function(){
         setTimeout(function() {
-        $(".tooltip").tooltipster("close");
-        $(".tooltip").tooltipster("content", mensagem); 
-    }, 1200);
+            $(event.target).closest(".tooltip").tooltipster("close");
+            $(event.target).closest(".tooltip").tooltipster("content", mensagem); 
+    }, 2500);
     });
     
 
 }
 
 function atualizaPlacar(){
+    
     $.get("http://localhost:3000/placar",(data)=>{
         $(data).each(function(data){
             var linha = novaLinha(this.usuario,this.pontos);

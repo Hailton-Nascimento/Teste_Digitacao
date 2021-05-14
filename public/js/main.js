@@ -13,8 +13,14 @@ var campo = $(".campo-digitacao");
         // )
         
         
-        $(document).ready(() => {
-            fraseAleatoria();
+        $(document).ready(function() {
+            $ ( '.tooltip' ). tooltipster ({ 
+                theme: 'my-custom-theme', 
+                touchDevices : false , 
+                trigger : 'custom',
+                trigger:"hover"
+            }); 
+            fraseAleatoria(event);
             verificaQuantasFrades();
             atualizaTamanhoFrase();
             inicializaContadores();
@@ -30,12 +36,7 @@ var campo = $(".campo-digitacao");
             });
         
   
-            $ ( '.tooltip' ). tooltipster ({ 
-                theme: 'my-custom-theme', 
-                touchDevices : false , 
-                trigger : 'custom',
-                trigger:"hover"
-            }); 
+            
             
             
 
